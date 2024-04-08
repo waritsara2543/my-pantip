@@ -1,10 +1,12 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
-import { StoreProvider } from "./StoreProvider";
+import { StoreProvider } from "./providers/StoreProvider";
 import { Nav } from "./components/Nav";
 
 import "./styles/globals.css";
 import styles from "./styles/layout.module.css";
+import { NextUiProviders } from "./providers/NextUiProvider";
+import RoomSelector from "./components/RoomSelector";
 
 interface Props {
   readonly children: ReactNode;
@@ -15,22 +17,22 @@ export default function RootLayout({ children }: Props) {
     <StoreProvider>
       <html lang="en">
         <body>
-          <section className={styles.container}>
+          <NextUiProviders>
             <Nav />
 
-            <header className={styles.header}>
-              <Image
-                src="/logo.svg"
-                className={styles.logo}
-                alt="logo"
-                width={100}
-                height={100}
-              />
-            </header>
+            {/* <header className={styles.header}>
+                <Image
+                  src="/logo.svg"
+                  className={styles.logo}
+                  alt="logo"
+                  width={100}
+                  height={100}
+                />
+              </header> */}
 
             <main className={styles.main}>{children}</main>
 
-            <footer className={styles.footer}>
+            {/* <footer className={styles.footer}>
               <span>Learn </span>
               <a
                 className={styles.link}
@@ -76,8 +78,8 @@ export default function RootLayout({ children }: Props) {
               >
                 Reselect
               </a>
-            </footer>
-          </section>
+            </footer> */}
+          </NextUiProviders>
         </body>
       </html>
     </StoreProvider>
